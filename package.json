@@ -1,0 +1,36 @@
+{
+	"name": "tverfageligprosjekt",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon app.js",
+		"fmt": "prettier -w --use-tabs ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Swifu69/tverfageligProsjekt.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Swifu69/tverfageligProsjekt/issues"
+	},
+	"homepage": "https://github.com/Swifu69/tverfageligProsjekt#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	},
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"ejs": "^3.1.7",
+		"express": "^4.17.3",
+		"express-locale": "^2.0.1",
+		"express-session": "^1.17.2",
+		"mongoose": "^6.3.1",
+		"passport": "^0.5.2",
+		"passport-local": "^1.0.0",
+		"path": "^0.12.7",
+		"prettier": "^2.6.2"
+	}
+}
