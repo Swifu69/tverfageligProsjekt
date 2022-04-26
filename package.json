@@ -23,6 +23,7 @@
 	},
 	"dependencies": {
 		"bcrypt": "^5.0.1",
+		"connect-flash": "^0.1.1",
 		"ejs": "^3.1.7",
 		"express": "^4.17.3",
 		"express-locale": "^2.0.1",
