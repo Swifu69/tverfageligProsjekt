@@ -18,20 +18,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(
-  expressSession({
-    secret: crypto.randomUUID(),
-    resave: true,
-    saveUninitialized: true,
-  })
+	expressSession({
+		secret: crypto.randomUUID(),
+		resave: true,
+		saveUninitialized: true,
+	})
 );
 
 mongodb
-  .connect(config.mongodb_uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("...connected to the database!"))
-  .catch(console.error);
+	.connect(config.mongodb_uri, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log("...connected to the database!"))
+	.catch(console.error);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,29 +39,29 @@ app.use(passport.session());
 app.use(flash());
 
 app.use((req, res, next) => {
-  res.locals.user = req.user;
-  res.locals.errorMessage = req.flash("errorMessage");
-  res.locals.successMessage = req.flash("successMessage");
-  res.locals.error = req.flash("error");
+	res.locals.user = req.user;
+	res.locals.errorMessage = req.flash("errorMessage");
+	res.locals.successMessage = req.flash("successMessage");
+	res.locals.error = req.flash("error");
 
-  next();
+	next();
 });
 
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index");
+	res.render("index");
 });
 
 app.get("/login", (req, res) => {
-  res.render("login");
+	res.render("login");
 });
 
 app.get("/register", (req, res) => {
-  res.render("register");
+	res.render("register");
 });
 
 app.use("/", require("./routes/register.js"));
 app.use("/", require("./routes/loginAuth.js"));
 
-app.listen(3000);
+app.listen(isNaN(config.port) ? 3000 : config.port, () => console.log("http://localhost:3000"));
