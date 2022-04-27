@@ -2,6 +2,10 @@
 <%-include("./partials/head.ejs")%>
 <body >
     <%-include("./partials/navbar.ejs")%>
-    <h1><%-error%></h1>
+    <% if(typeof user == 'undefined') {%> 
+    <h1>401</h1>
+    <span>you dont have access to this site</span>
+    <% } %> 
+    <%-include("./partials/footer.ejs")%>
 </body>
 </html>

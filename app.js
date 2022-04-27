@@ -78,6 +78,13 @@ app.get("/logout", (req, res) => {
 	req.flash("successMessage", "You have been logged out");
 	res.redirect("/");
 });
+app.get("/error", (req, res) => {
+	res.render("error");
+});
+
+app.get("", (req, res) => {
+	res.render("error");
+});
 
 app.use("/", require("./routes/register.js"));
 app.use("/", require("./routes/loginAuth.js"));

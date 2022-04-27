@@ -2,9 +2,9 @@
   <div class="card text-center" style="width: 18rem">
     <div class="card-body bg-dark text-light">
 
-      <%if(errorMessage != '') { %> 
-      <h1 class = "errormsg"><%=errorMessage%> </h1>
-      <% } %> 
+      <% if(errorMessage != '') { %>
+        <div class="errMsg"><%= errorMessage %></div>
+        <% } %>
       <form action="/register" method="POST">
         <div class="mb-3">
 
@@ -37,9 +37,10 @@
               id="exampleInputPassword1"
             />
           </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
       </form>
     </div>
   </div>

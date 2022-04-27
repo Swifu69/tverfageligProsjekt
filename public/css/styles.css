@@ -1,0 +1,27 @@
+.fixBackgroundOnSideNav {
+	background-color: transparent !important;
+}
+
+.errMsg {
+	color: white;
+	padding: 11px;
+	text-align: center;
+	background: linear-gradient(to right, #f00d0d, #db1890);
+	border-radius: 30px;
+	margin-bottom: 2%;
+}
+
+.sucMsg {
+	color: white;
+	padding: 11px;
+	text-align: center;
+	background: linear-gradient(to right, #27f00d, #18dbbb);
+	border-radius: 30px;
+	margin-bottom: 2%;
+}
+
+@media (max-width: 1250px) {
+	.sidebar {
+		display: none;
+	}
+}

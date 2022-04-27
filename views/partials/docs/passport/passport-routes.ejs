@@ -1,0 +1,45 @@
+<h1 id="item-2-2">Middleware in routes</h1>
+<br />
+
+<p>
+  We can import the middleware into a route and let a user access a page that
+  requires authorization. If the user is not authenticated then we can redirect
+  him to a error page or something else.
+</p>
+
+<pre><code class="language-js">
+const { Router } = require('express');
+
+// Require auth middleware
+const userIsAuthenticated = require('../middleware/authenticate-path.js');
+
+const router = new Router();
+
+// Render page that requires authentication
+router.get('/secret', userIsAuthenticated, (req, res) => renderSecret(req, res));
+
+module.exports = router;
+</code></pre>
+<br />
+
+<h1 id="item-3-1">Security</h1>
+<br />
+<h3>Hashing and salting</h3>
+<br />
+<span
+  >Hashing a password is putting a password through a hashing algorithm to
+  convert the password(a string) into many random characters, letters and
+  numbers.</span
+>
+<br />
+<span
+  >Salting a password is adding a extra layer of security to a password. It add
+  a sequence of random character at the end of a password making it harder to
+  crack.</span
+><br />
+
+<span
+  >I recomend to use
+  <a href="https://www.npmjs.com/package/bcrypt">bcrypt</a> to hash and salt
+  your passwords since it is a easy library to use and its very secure</span
+>
