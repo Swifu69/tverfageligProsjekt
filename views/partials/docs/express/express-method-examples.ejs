@@ -1,0 +1,21 @@
+<h1 id="item-2-2">Middleware</h1>
+<br />
+
+<p>
+  Passport has a isAuthenticated method that can be used on the request object.
+  isAuthenticated return a boolean value. We can use it to make a middleware
+  that restricts non-authenticated users from accessing pages that are exclusive
+  for authenticated users
+</p><br />
+
+<pre><code class="language-js">
+function userIsAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        //Whatever you want. Either send a user to an error page or to the login page. 
+    }
+};
+
+module.exports = isLoggedIn; //Remeber to export it!
+</code></pre>

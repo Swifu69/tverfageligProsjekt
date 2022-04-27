@@ -1,0 +1,108 @@
+<h1 id="item-1-2">Using localStrategy()</h1>
+<span class="text-bold"
+  >LocalStrategy() expects to find credentials in parameters. They are named
+  username and password. You can call also call them for other names if you
+  wish</span
+>
+<pre><code class="language-js">
+passport.use(new LocalStrategy({
+    usernameField: 'email', 
+    passwordField: 'password',
+    session: //true or false, depends if working with express-session
+    },
+    function(username, password, done) {
+     // Logic for comparing passwords and emails
+    }
+));            
+</code></pre>
+
+<h1>Passport functions</h1>
+<br />
+<h3>done()</h3>
+<br />
+<span
+  >done() takes in 3 arguments (error, user, and options) and its called after
+  the validation is finished. If the done() is called with the user, passportjs
+  then will make the user avaiable with the req object(req.user, req.email).
+  Options could for example be a message an error message. </span
+><br />
+<h3>passport.serializeUser()</h3>
+<br />
+<span
+  >serializeUser makes it possible to save user or userdata in a session</span
+>
+<br />
+<h3>passport.deserializeUser()</h3>
+<br />
+<span
+  >deserializeUser makes it possible to the the user stored in the sessions and
+  call done().</span
+><br />
+<br /><br />
+
+<h1 id="item-1-3">Configuration for the strategy</h1>
+<br />
+
+<pre><code class="language-js">
+//require passport local with strategy    
+const passportLocalStrat = require("passport-local").Strategy;
+//optional, but recommended using
+const bcrypt = require("bcrypt");
+//require the user model
+const User = require("../models/user");
+
+const passportConfig = (passport) => {
+    passport.use( //authentication
+        new passportLocalStrat(
+            { usernameField: "email" }, //Get user by email
+            async (email, password, done) => {
+                let user = await User.findOne({ email: email });
+                //If there is a user compare the passwords 
+                if (user) {
+                    bcrypt.compare(password, user.password, (err, match) => {
+                        if (err) throw err;
+                        if (match) return done(null, user);  //done returns the user
+                        else
+                            return done(null, false, {
+                                message: "email or password was incorrect",
+                            });
+                    });
+                } else {
+                    return done(null, false, { message: "user not found" });
+                }
+            }
+        )
+    );
+    //Save the user in the session
+    passport.serializeUser((user, done) => {
+        done(null, user.id);
+    });
+    //Get stored user from session
+    passport.deserializeUser(async (id, done) => {
+        const user = await User.findById(id);
+        done(null, user);
+    });
+};
+
+module.exports = passportConfig;
+                 
+    </code></pre>
+
+<br />
+
+<h1 id="item-2">Authentication of a request</h1>
+<p>
+  passport.authenticate() is used to authenticate a user. You can spesify
+  'local' as the authentication request. After spesify 'local' you can spefify
+  additional options
+</p>
+
+<pre><code class="language-js">
+app.post('/login', passport.authenticate('local', 
+    { failureRedirect: '/login' }), //if not authorized redirect to /login page 
+        (req, res) => {
+            res.redirect('/');//if successfull send to index or a page of preference
+});
+</code></pre>
+    
+<br />

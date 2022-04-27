@@ -28,6 +28,8 @@
 		"express": "^4.17.3",
 		"express-locale": "^2.0.1",
 		"express-session": "^1.17.2",
+		"highlight.js": "^11.5.1",
+		"highlightjs-jolie": "^0.1.8",
 		"mongoose": "^6.3.1",
 		"passport": "^0.5.2",
 		"passport-local": "^1.0.0",

@@ -5,6 +5,7 @@ const passport = require("passport");
 const path = require("path");
 const flash = require("connect-flash");
 const crypto = require("crypto").webcrypto;
+const checkedIn = require("./controllers/checkedIn.js");
 
 const app = express();
 
@@ -53,6 +54,17 @@ app.get("/", (req, res) => {
 	res.render("index");
 });
 
+app.get("/documents", checkedIn, (req, res) => {
+	res.render("documents");
+});
+
+app.get("/documents", (req, res) => {
+	res.render("documents", {
+		user: req.user,
+		checkedIn: req.isAuthenticated(),
+	});
+});
+
 app.get("/login", (req, res) => {
 	res.render("login");
 });
@@ -61,7 +73,15 @@ app.get("/register", (req, res) => {
 	res.render("register");
 });
 
+app.get("/logout", (req, res) => {
+	req.logout();
+	req.flash("successMessage", "You have been logged out");
+	res.redirect("/");
+});
+
 app.use("/", require("./routes/register.js"));
 app.use("/", require("./routes/loginAuth.js"));
 
-app.listen(isNaN(config.port) ? 3000 : config.port, () => console.log("http://localhost:3000"));
+app.listen(isNaN(config.port) ? 3000 : config.port, () =>
+	console.log("http://localhost:3000")
+);

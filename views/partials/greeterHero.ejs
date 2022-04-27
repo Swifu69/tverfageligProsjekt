@@ -1,0 +1,53 @@
+<div class="container col-xxl-8 px-4 py-5">
+  <div
+    class="row flex-lg-row-reverse align-items-center g-5 py-5 bg-dark border rounded-3"
+  >
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img
+        src="/images/passportjs.svg"
+        class="d-block mx-lg-auto img-fluid"
+        loading="lazy"
+        width="400"
+        height="200"
+      />
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3 text-light">Passport.js</h1><br />
+      <p class="lead text-light">
+        Passport is authentication middleware for Node.js. Extremely flexible
+        and modular, Passport can be unobtrusively dropped in to any
+        Express-based web application. A comprehensive set of strategies support
+        authentication using a username and password for Facebook, Twitter, and
+        more!
+      </p> <br />
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <% if(typeof user == 'undefined'){ %>
+        <a
+          type="button"
+          class="btn btn-outline-primary btn-lg px-4 me-md-2"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          type="button"
+          class="btn btn-outline-danger btn-lg px-4"
+          href="/register"
+        >
+          Register
+        </a>
+        <% } %> <% if(typeof user != 'undefined'){ %>
+
+        <a
+          type="button"
+          class="btn btn-outline-primary btn-lg px-4"
+          href="/documents"
+        >
+          Documents
+        </a>
+
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

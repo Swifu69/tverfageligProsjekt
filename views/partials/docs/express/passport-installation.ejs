@@ -1,0 +1,53 @@
+    <h1 id="item-1">Installing Passportjs</h1><br>
+
+    <p>To install passportjs use the following command:</p><br>
+
+    
+        <pre><code class="language-bash">$ npm i passport</code></pre>
+    <br>
+
+    <h1 id="item-1-1">Usage</h1><br>
+
+    <p>First create a server.js file and add your express-dependencies as well as passport and mongoose</p>
+        
+<pre><code class="language-js">
+const express = require("express");
+const mongodb = require("mongoose");
+const expressSession = require("express-session");
+const passport = require("passport");
+
+const app = express();
+
+passportConfig(passport);
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+	expressSession({
+		secret: "My dirty little secret",
+		resave: true,
+		saveUninitialized: true,
+	})
+);
+
+mongodb
+	.connect(mongodb://database/collections, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log("...connected to the database!"))
+	.catch(console.error);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.set("view engine", "ejs");
+
+app.get("/", (req, res) => {
+	res.render("index");
+});
+
+
+
+app.listen(3000)
+</code></pre>

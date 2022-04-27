@@ -1,6 +1,6 @@
-<div class="position-absolute top-50 start-50 translate-middle">
+<div class="position-absolute top-50 start-50 translate-middle bg-dark">
   <div class="card text-center" style="width: 18rem">
-    <div class="card-body">
+    <div class="card-body bg-dark text-light">
 
       <%if(errorMessage != '') { %> 
       <h1 class = "errormsg"><%=errorMessage%> </h1>
@@ -26,17 +26,19 @@
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-          />
+          /> <br />
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            name="password"
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
+        
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

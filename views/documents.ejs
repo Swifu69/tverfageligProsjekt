@@ -1,0 +1,39 @@
+<html lang="en">
+  <%-include("./partials/head.ejs")%>
+
+  <link
+    rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/tokyo-night-dark.min.css"
+  />
+
+  <body>
+    <%-include("./partials/navbar.ejs")%>
+    <html lang="en">
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-3">
+            <%- include('./partials/docs/express/passport-docs-nav.ejs') %>
+          </div>
+
+          <div
+            class="col-9"
+            data-bs-spy="scroll"
+            data-bs-target="#navbar-example3"
+            data-bs-offset="0"
+            tabindex="0"
+          >
+            <%-include('./partials/docs/express/passport-installation.ejs') %>
+            <%-include('./partials/docs/express/express-dependencies.ejs') %>
+            <%-include('./partials/docs/express/express-method-examples.ejs') %>
+            <%-include('./partials/docs/express/express-middleware.ejs') %>
+          </div>
+        </div>
+      </div>
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+      <script>
+        hljs.initHighlightingOnLoad();
+      </script>
+    </html>
+  </body>
+</html>
