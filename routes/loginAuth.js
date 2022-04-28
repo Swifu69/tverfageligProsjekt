@@ -1,4 +1,5 @@
 const { Router } = require("express");
+//requiring authentication controller
 const authenticate = require("../controllers/authentication");
 const router = Router();
 

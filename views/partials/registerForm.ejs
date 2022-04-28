@@ -1,10 +1,11 @@
 <div class="position-absolute top-50 start-50 translate-middle bg-dark">
-  <div class="card text-center" style="width: 18rem">
+  <div class="card text-center border-info" style="width: 18rem">
     <div class="card-body bg-dark text-light">
 
       <% if(errorMessage != '') { %>
         <div class="errMsg"><%= errorMessage %></div>
         <% } %>
+       <h1><span class="badge">Register</span></h1><br />
       <form action="/register" method="POST">
         <div class="mb-3">
 
@@ -37,7 +38,7 @@
               id="exampleInputPassword1"
             />
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
         </div>
         
         

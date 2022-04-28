@@ -1,5 +1,5 @@
-<div class="position-absolute top-50 start-50 translate-middle">
-  <div class="card text-center" style="width: 18rem">
+<div class="position-absolute top-50 start-50 translate-middle ">
+  <div class="card text-center border-info" style="width: 18rem">
     <div class="card-body bg-dark text-light">
       <% if(errorMessage !== '') { %>
       <div><%= errorMessage %></div>
@@ -8,6 +8,7 @@
       <% } %> <% if(successMessage != '') { %>
       <div class="sucMsg"><%= successMessage%></div>
       <% } %>
+      <h1><span class="badge">Log In</span></h1><br />
       <form action="/login" method="POST">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
@@ -30,7 +31,7 @@
             id="exampleInputPassword1"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
       </form>
     </div>
   </div>
